@@ -1999,3 +1999,68 @@ textarea.form-input::-webkit-resizer { display: none; }
     text-align: left;
   }
 }
+/* ################## */
+@media (max-width: 450px) {
+  .info-content1 .title {
+    margin-left: 10px;
+    text-align: left;
+  }
+}
+@media (max-width: 450px) {
+  .info-content1 .title {
+    margin: 0; /* Removes centering */
+    text-align: left;
+  }
+}
+/* ################## */
+@media (max-width:580px) {
+  .info-content1 .title {
+    margin-left: 10px;
+    text-align: left;
+  }
+}
+@media (max-width: 580px) {
+  .info-content1 .title {
+    margin: 0; /* Removes centering */
+    text-align: left;
+  }
+}
+/* ################## */
+@media (max-width:  768px) {
+  .info-content1 .title {
+    margin-left: 10px;
+    text-align: left;
+  }
+}
+@media (max-width:  768px) {
+  .info-content1 .title {
+    margin: 0; /* Removes centering */
+    text-align: left;
+  }
+}
+/* ################## */
+@media (max-width: 1024px) {
+  .info-content1 .title {
+    margin-left: 10px;
+    text-align: left;
+  }
+}
+@media (max-width:1024px) {
+  .info-content1 .title {
+    margin: 0; /* Removes centering */
+    text-align: left;
+  }
+}
+/* ################## */
+@media (max-width:1250px) {
+  .info-content1 .title {
+    margin-left: 10px;
+    text-align: left;
+  }
+}
+@media (max-width:1250px) {
+  .info-content1 .title {
+    margin: 0; /* Removes centering */
+    text-align: left;
+  }
+}
