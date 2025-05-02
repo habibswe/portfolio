@@ -135,29 +135,46 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
-
-
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    const clickedText = this.textContent.trim().toLowerCase();
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
+    // Loop through pages and nav links
+    for (let j = 0; j < pages.length; j++) {
+      const page = pages[j];
+      const navLink = navigationLinks[j];
+      const pageText = page.dataset.page;
+
+      // Toggle page visibility
+      if (clickedText === pageText) {
+        page.classList.add("active");
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        page.classList.remove("active");
+      }
+
+      // Toggle link styling
+      if (pageText === "contact") {
+        navLink.classList.remove("active");
+        navLink.classList.remove("contact-active");
+        if (clickedText === "contact") {
+          navLink.classList.add("contact-active");
+        }
+      } else {
+        navLink.classList.remove("active");
+        if (clickedText === pageText) {
+          navLink.classList.add("active");
+        }
       }
     }
 
+    window.scrollTo(0, 0);
   });
 }
+
 
 
 
@@ -192,3 +209,28 @@ window.onclick = function(event) {
 
 
 
+// ##########################################
+
+ const navLinks = document.querySelectorAll('[data-nav-link]');
+  const contactBtn = [...navLinks].find(btn => btn.textContent.trim() === 'Contact');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Reset all buttons
+      navLinks.forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.remove('contact-active');
+      });
+
+      // Special case: if it's Contact
+      if (link === contactBtn) {
+        link.classList.add('contact-active');
+      } else {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  document.querySelector('[data-sidebar-btn]').addEventListener('click', function () {
+    document.querySelector('.sidebar').classList.toggle('active');
+  });
