@@ -122,7 +122,6 @@ const formBtn = document.querySelector("[data-form-btn]");
 
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
-  
   formInputs[i].addEventListener("input", function () {
 
     // check form validation
@@ -135,102 +134,26 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+
+
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
-    const clickedText = this.textContent.trim().toLowerCase();
 
-    // Loop through pages and nav links
-    for (let j = 0; j < pages.length; j++) {
-      const page = pages[j];
-      const navLink = navigationLinks[j];
-      const pageText = page.dataset.page;
-
-      // Toggle page visibility
-      if (clickedText === pageText) {
-        page.classList.add("active");
+    for (let i = 0; i < pages.length; i++) {
+      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+        pages[i].classList.add("active");
+        navigationLinks[i].classList.add("active");
+        window.scrollTo(0, 0);
       } else {
-        page.classList.remove("active");
-      }
-
-      // Toggle link styling
-      if (pageText === "contact") {
-        navLink.classList.remove("active");
-        navLink.classList.remove("contact-active");
-        if (clickedText === "contact") {
-          navLink.classList.add("contact-active");
-        }
-      } else {
-        navLink.classList.remove("active");
-        if (clickedText === pageText) {
-          navLink.classList.add("active");
-        }
+        pages[i].classList.remove("active");
+        navigationLinks[i].classList.remove("active");
       }
     }
 
-    window.scrollTo(0, 0);
   });
 }
-
-
-
-
-// ##########################
-
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-
-
-// ##########################################
-
- const navLinks = document.querySelectorAll('[data-nav-link]');
-  const contactBtn = [...navLinks].find(btn => btn.textContent.trim() === 'Contact');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      // Reset all buttons
-      navLinks.forEach(btn => {
-        btn.classList.remove('active');
-        btn.classList.remove('contact-active');
-      });
-
-      // Special case: if it's Contact
-      if (link === contactBtn) {
-        link.classList.add('contact-active');
-      } else {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  document.querySelector('[data-sidebar-btn]').addEventListener('click', function () {
-    document.querySelector('.sidebar').classList.toggle('active');
-  });

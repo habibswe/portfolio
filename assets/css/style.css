@@ -25,7 +25,7 @@
 
   --bg-gradient-onyx: linear-gradient(
     to bottom right, 
-    hsl(240, 1%, 25%) 2%, 
+    hsl(240, 1%, 25%) 3%, 
     hsl(0, 0%, 19%) 97%
   );
   --bg-gradient-jet: linear-gradient(
@@ -179,7 +179,7 @@ article {
   width: 100%;
   height: 1px;
   background: var(--jet);
-  margin: 12px 0;
+  margin: 16px 0;
 }
 
 .icon-box {
@@ -333,7 +333,7 @@ main {
 
 .avatar-box {
   background: var(--bg-gradient-onyx);
-  border-radius: 50px;
+  border-radius: 20px;
 }
 
 .info-content .name {
@@ -486,6 +486,8 @@ main {
 .navbar-link:focus { color: var(--light-gray-70); }
 
 .navbar-link.active { color: var(--orange-yellow-crayola); }
+
+
 
 
 
@@ -872,7 +874,7 @@ main {
 /*-----------------------------------*\
   #PORTFOLIO
 \*-----------------------------------*/
-/* 
+
 .filter-list { display: none; }
 
 .filter-select-box {
@@ -1023,7 +1025,7 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
 }
- */
+
 
 
 
@@ -1031,7 +1033,7 @@ main {
 /*-----------------------------------*\
   #BLOG
 \*-----------------------------------*/
-/* 
+
 .blog-posts { margin-bottom: 10px; }
 
 .blog-posts-list {
@@ -1111,7 +1113,7 @@ main {
   font-weight: var(--fw-300);
   line-height: 1.6;
 }
- */
+
 
 
 
@@ -1289,7 +1291,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .sidebar, article {
     width: 520px;
     margin-inline: auto;
-    padding: 20px;
+    padding: 30px;
   }
 
   .article-title {
@@ -1504,11 +1506,11 @@ textarea.form-input::-webkit-resizer { display: none; }
    * #PORTFOLIO, BLOG
    */
 
-  /* .project-img, .blog-banner-box { border-radius: 16px; }
+  .project-img, .blog-banner-box { border-radius: 16px; }
 
   .blog-posts-list { gap: 30px; }
 
-  .blog-content { padding: 25px; } */
+  .blog-content { padding: 25px; }
 
 
 
@@ -1555,7 +1557,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .sidebar, article { width: 700px; }
 
-  .has-scrollbar::-webkit-scrollbar-button { width: 200px; }
+  .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
 
 
 
@@ -1592,6 +1594,40 @@ textarea.form-input::-webkit-resizer { display: none; }
   .modal-avatar-box img { width: 80px; }
 
 
+
+  /**
+   * PORTFOLIO
+   */
+
+  .article-title { padding-bottom: 20px; }
+
+  .filter-select-box { display: none; }
+
+  .filter-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 25px;
+    padding-left: 5px;
+    margin-bottom: 30px;
+  }
+
+  .filter-item button {
+    color: var(--light-gray);
+    font-size: var(--fs-5);
+    transition: var(--transition-1);
+  }
+
+  .filter-item button:hover { color: var(--light-gray-70); }
+
+  .filter-item button.active { color: var(--orange-yellow-crayola); }
+
+  /* portfolio and blog grid */
+
+  .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
+
+
+
   /**
    * CONTACT
    */
@@ -1604,6 +1640,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
   
 }
+
 
 
 
@@ -1652,7 +1689,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .main-content {
     position: relative;
     width: max-content;
-    height: max-content;
     margin: auto;
   }
 
@@ -1708,7 +1744,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    * PORTFOLIO
    */
 
-  /* .project-list { grid-template-columns: repeat(3, 1fr); } */
+  .project-list { grid-template-columns: repeat(3, 1fr); }
 
 
 
@@ -1846,118 +1882,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 
-
-
-
-
-
-
-/* ###################
- */
-
-
-
- /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(255, 255, 255, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #1E1E1F;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #ffffff;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #ffffff;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.social-link ion-icon {
-  font-size: 40px; /* You can adjust the size as needed */
-}
-
-
-
-
-/* Extra */
-
-
-
-
-  .info-content {
-    text-align: center; /* Center the button container */
-    margin-top: 10px;
-    font-size: 18px;
-  }
-  
-  .download-link {
-    background-color: #2B2B2C;   /* Default white background */
-    color: #ffffff;               /* Default black text */
-    text-decoration: none;
-    padding: 8px 24px;
-    
-    border: 2px solid #f7e28a; 
-    border-radius: 10px;
-    display: inline-block;
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
-  
-  .download-link:hover {
-    /* background-color: #f7e28a;    */
-      /* Hover black background */
-    color: #f7e28a;                
-    /* Hover white text */
-    /* border: 2px solid #f7e28a;  */
-  }
-
-    .download-link {
-      display: inline-block !important;
-      font-size: 16px !important;
-      padding: 10px 20px !important;
-      background-color: #2B2B2C !important;
-      color: #ffffff !important;
-      border: 2px solid #f7e28a !important;
-      border-radius: 10px !important;
-      text-decoration: none !important;
-      font-weight: bold !important;
-      position: relative !important;
-      z-index: 10 !important;
-    }
-  
-  
-
-  .form-title {
-    text-align: left;
-  }
-  
-/* 
-
-  
-/* 3333333333333333333 */
+/* ££££  Refactor £££££ */
+ 
 .info-content1 .name {
   color: var(--white-2);
   font-size: var(--fs-3);
@@ -2077,32 +2003,14 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 
-/* Social media hover effect */
-
-.tooltip {
-  position: relative;
-  display: inline-block;
+.social-item .social-link {
+  color: var(--light-gray-70);
+  font-size: 18px;
 }
 
-.tooltip .tooltip-text {
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  bottom: 125%; /* Show above icon */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  z-index: 1;
-  transition: opacity 0.3s ease;
-}
 
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
-  color: #ffdb70;
+.social-item .social-link:hover { color: var(--light-gray); }
+
+.social-link ion-icon {
+  font-size: 40px; /* You can adjust the size as needed */
 }
