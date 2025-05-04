@@ -134,10 +134,27 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
-const successMessage=()=>{
-  alert("Masage Sent Sucessfully!")
-}
+const successMessage = () => {
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
 
+  // Close the toast when the close button is clicked
+  document.getElementById('close-toast').addEventListener('click', () => {
+    toast.classList.remove('show');
+  });
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2000); // Toast visible for 5 seconds
+};
+
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  successMessage();
+  form.reset();
+  formBtn.setAttribute("disabled", "");
+});
 
 
 // page navigation variables
@@ -161,3 +178,5 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+

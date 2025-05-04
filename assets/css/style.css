@@ -108,6 +108,7 @@
 
   --transition-1: 0.25s ease;
   --transition-2: 0.5s ease-in-out;
+  --transition-5: 5s ease;
 
 }
 
@@ -1922,8 +1923,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 } 
 
 
-
-
 @media (max-width: 767px) {
   .info-content1 .title {
     margin-left: 10px;
@@ -2014,3 +2013,45 @@ textarea.form-input::-webkit-resizer { display: none; }
 .social-link ion-icon {
   font-size: 40px; /* You can adjust the size as needed */
 }
+/* toast */
+.toast {
+  visibility: hidden;
+  min-width: 265px;
+  background-color: #4CAF50;
+  color: #fff;
+  text-align: left;
+  border-radius: 4px;
+  padding: 12px;
+  position: fixed;
+  z-index: 1000;
+  top: 20px; /* Position it at the top */
+  right: 35px; /* Position it on the right */
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out, visibility 0s 2s; 
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out, visibility 0s 0s; /* Reset visibility timing once shown */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: hsl(0, 100%, 50%)
+}
+
+

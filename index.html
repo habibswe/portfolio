@@ -1234,11 +1234,15 @@
 
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
 
-            <button class="form-btn" type="submit"disabled onclick="successMessage()" data-form-btn>
+            <button class="form-btn" type="submit" disabled onclick="successMessage()" data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
 
+            <div id="toast" class="toast">
+              Message Sent Successfully!
+              <button id="close-toast" class="close-btn">&times;</button> 
+            </div>
           </form>
 
         </section>
