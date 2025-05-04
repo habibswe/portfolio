@@ -134,6 +134,10 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+const successMessage=()=>{
+  alert("Masage Sent Sucessfully!")
+}
+
 
 
 // page navigation variables
