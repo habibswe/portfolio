@@ -2017,24 +2017,31 @@ textarea.form-input::-webkit-resizer { display: none; }
 .toast {
   visibility: hidden;
   min-width: 265px;
+  max-width: 90vw; /* Prevent overflow on small screens */
   background-color: #4CAF50;
   color: #fff;
   text-align: left;
   border-radius: 4px;
-  padding: 12px;
+  padding: 12px 16px;
   position: fixed;
   z-index: 1000;
-  top: 20px; /* Position it at the top */
-  right: 35px; /* Position it on the right */
+  top: 20px;
+  right: 20px; /* Reduced from 35px for small screen margin */
   font-size: 15px;
   opacity: 0;
-  transition: opacity 0.6s ease-in-out, visibility 0s 2s; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.6s ease-in-out, visibility 0s 2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-sizing: border-box; /* Makes padding and width behave well on all screens */
 }
 
 .toast.show {
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.6s ease-in-out, visibility 0s 0s; /* Reset visibility timing once shown */
+  transition: opacity 0.6s ease-in-out, visibility 0s 0s;
 }
 
 .close-btn {
@@ -2044,14 +2051,29 @@ textarea.form-input::-webkit-resizer { display: none; }
   font-size: 22px;
   position: absolute;
   top: 8px;
-  right: 20px;
+  right: 16px; /* Slightly closer */
   cursor: pointer;
   padding: 0;
   transition: color 0.3s ease;
 }
 
+
 .close-btn:hover {
   color: hsl(0, 100%, 50%)
+}
+
+@media (max-width: 400px) {
+  .toast {
+    right: 10px;
+    top: 10px;
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .close-btn {
+    font-size: 20px;
+    right: 12px;
+  }
 }
 
 
