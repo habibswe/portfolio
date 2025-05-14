@@ -115,46 +115,60 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 
 
-// contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
+// Enable/disable submit button based on input validity
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
-    // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
-
   });
 }
 
+// Show toast message
 const successMessage = () => {
   const toast = document.getElementById('toast');
   toast.classList.add('show');
 
-  // Close the toast when the close button is clicked
   document.getElementById('close-toast').addEventListener('click', () => {
     toast.classList.remove('show');
   });
 
   setTimeout(() => {
     toast.classList.remove('show');
-  }, 2000); // Toast visible for 5 seconds
+  }, 2000);
 };
 
-
-form.addEventListener("submit", function(e) {
+// Formspree submission
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
-  successMessage();
-  form.reset();
-  formBtn.setAttribute("disabled", "");
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.reset();
+      formBtn.setAttribute("disabled", "");
+      successMessage();
+    } else {
+      alert("There was an error sending the message.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
 });
+
 
 
 // page navigation variables

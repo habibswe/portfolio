@@ -1211,41 +1211,40 @@
         <header>
           <h2 class="h2 article-title">Contact</h2>
         </header>
-
+      
         <section class="mapbox" data-mapbox>
           <figure>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.375885468742!2d90.35270977397072!3d23.769625588040483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0a1af311d05%3A0xcc3cccc9c65b0522!2s11%20Shekhertek%20Main%20Rd%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1746208414104!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
+              width="400" height="300" loading="lazy" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           </figure>
         </section>
-
+      
         <section class="contact-form">
-
           <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
+      
+          <form action="https://formspree.io/f/xovdyawa" method="POST" class="form" data-form id="contact-form">
+      
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
               <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
-
+      
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled onclick="successMessage()" data-form-btn>
+      
+            <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-
+      
             <div id="toast" class="toast">
               Message Sent Successfully!
-              <button id="close-toast" class="close-btn">&times;</button> 
+              <button id="close-toast" class="close-btn">&times;</button>
             </div>
           </form>
-
         </section>
+
         <!-- Add social-item -->
         <h3 class="h3 form-title">Follow Me</h3>
         <ul class="social-list">
