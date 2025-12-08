@@ -145,28 +145,38 @@ const successMessage = () => {
 };
 
 // Formspree submission
-form.addEventListener("submit", async function (e) {
+// EmailJS submission
+const serviceID = "service_tqmnwma"; // Replace with your Service ID (e.g., "service_xxxx")
+const templateID = "template_it1866q"; // Replace with your Template ID (e.g., "template_xxxx")
+
+form.addEventListener("submit", function (e) {
   e.preventDefault();
+
+  // Disable button and show loading state if desired
+  formBtn.setAttribute("disabled", "");
+  formBtn.innerHTML = "<span>Sending...</span>";
 
   const formData = new FormData(form);
 
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
+  // Prepare the parameters that match your EmailJS Template
+  const templateParams = {
+    from_name: formData.get("fullname"), // This maps to {{from_name}} in your template (Subject source)
+    reply_to: formData.get("email"),     // This maps to {{reply_to}} in your template
+    message: formData.get("message")     // This maps to {{message}} in your template
+  };
 
-    if (response.ok) {
+  emailjs.send(serviceID, templateID, templateParams)
+    .then(() => {
       form.reset();
-      formBtn.setAttribute("disabled", "");
       successMessage();
-    } else {
-      alert("There was an error sending the message.");
-    }
-  } catch (error) {
-    alert("Network error. Please try again.");
-  }
+      formBtn.setAttribute("disabled", ""); // Keep disabled until new input
+      formBtn.innerHTML = "<ion-icon name='paper-plane'></ion-icon><span>Send Message</span>";
+    }, (err) => {
+      formBtn.removeAttribute("disabled");
+      formBtn.innerHTML = "<ion-icon name='paper-plane'></ion-icon><span>Send Message</span>";
+      alert(JSON.stringify(err));
+      alert("Failed to send message. Please check your internet connection.");
+    });
 });
 
 
