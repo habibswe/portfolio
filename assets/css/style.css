@@ -1209,12 +1209,19 @@ main {
   color: var(--white-2);
   font-size: var(--fs-6);
   font-weight: var(--fw-400);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 #current-page,
-#total-pages {
+#total-pages,
+#cert-current-page,
+#cert-total-pages {
   color: var(--orange-yellow-crayola);
   font-weight: var(--fw-500);
+  display: inline;
 }
 
 
@@ -1231,6 +1238,14 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+}
+
+.certificate-item {
+  display: none;
+}
+
+.certificate-item.active {
+  display: block;
 }
 
 .blog-post-item>a {

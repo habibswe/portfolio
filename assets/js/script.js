@@ -320,3 +320,74 @@ filterBtns.forEach(btn => {
 // Initialize pagination on page load
 updatePagination();
 
+
+// Pagination for Certificates
+const CERTIFICATES_PER_PAGE = 4;
+let currentCertPage = 1;
+
+const updateCertificatePagination = () => {
+  const certificateItems = document.querySelectorAll("[data-certificate-item]");
+  const totalCertPages = Math.ceil(certificateItems.length / CERTIFICATES_PER_PAGE);
+  const startIndex = (currentCertPage - 1) * CERTIFICATES_PER_PAGE;
+  const endIndex = startIndex + CERTIFICATES_PER_PAGE;
+
+  // Hide all certificates first
+  certificateItems.forEach(item => {
+    item.classList.remove("active");
+  });
+
+  // Show only certificates for current page
+  Array.from(certificateItems).slice(startIndex, endIndex).forEach(item => {
+    item.classList.add("active");
+  });
+
+  // Update pagination UI
+  const currentPageEl = document.getElementById("cert-current-page");
+  const totalPagesEl = document.getElementById("cert-total-pages");
+  
+  if (currentPageEl && totalPagesEl) {
+    currentPageEl.textContent = currentCertPage;
+    totalPagesEl.textContent = totalCertPages;
+  }
+  
+  const certPrevBtn = document.getElementById("cert-prev-btn");
+  const certNextBtn = document.getElementById("cert-next-btn");
+  
+  if (certPrevBtn && certNextBtn) {
+    certPrevBtn.disabled = currentCertPage === 1;
+    certNextBtn.disabled = currentCertPage === totalCertPages;
+  }
+  
+  // Hide pagination if only one page
+  const certPagination = document.querySelector(".certificate-pagination");
+  if (certPagination) {
+    certPagination.style.display = totalCertPages <= 1 ? "none" : "flex";
+  }
+};
+
+// Certificate pagination button events
+const certPrevBtn = document.getElementById("cert-prev-btn");
+const certNextBtn = document.getElementById("cert-next-btn");
+
+if (certPrevBtn && certNextBtn) {
+  certPrevBtn.addEventListener("click", () => {
+    if (currentCertPage > 1) {
+      currentCertPage--;
+      updateCertificatePagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  certNextBtn.addEventListener("click", () => {
+    const totalCertPages = parseInt(document.getElementById("cert-total-pages").textContent);
+    if (currentCertPage < totalCertPages) {
+      currentCertPage++;
+      updateCertificatePagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+}
+
+// Initialize certificate pagination on page load
+updateCertificatePagination();
+
