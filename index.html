@@ -140,8 +140,9 @@
           <p class="title">
             <b>
               <a href="assets/Resume/Habib_SQA_Engineer_Resume_2Years+.pdf" download
-                style="text-decoration: none; color: inherit;">
-                Download CV
+                class="cv-download" style="text-decoration: none; color: inherit;">
+                <span class="cv-text">Download CV</span>
+                <span class="cv-loading" aria-hidden="true"></span>
               </a>
             </b>
           </p>
@@ -1015,6 +1016,17 @@
             </li> -->
 
           </ul>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <button class="pagination-btn" id="prev-btn" disabled>
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </button>
+            <span class="pagination-info">Page <span id="current-page">1</span> of <span id="total-pages">1</span></span>
+            <button class="pagination-btn" id="next-btn">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </button>
+          </div>
 
         </section>
 

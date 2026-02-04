@@ -204,3 +204,119 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 
+// Download CV button: show downloading text + loading dots, disable pointer briefly
+const cvDownloadLink = document.querySelector(".cv-download");
+
+if (cvDownloadLink) {
+  cvDownloadLink.addEventListener("click", function () {
+    if (cvDownloadLink.classList.contains("is-downloading")) return;
+
+    const textNode = cvDownloadLink.querySelector(".cv-text");
+    const originalText = textNode ? textNode.textContent.trim() : "Download CV";
+
+    cvDownloadLink.dataset.originalText = originalText;
+    if (textNode) textNode.textContent = "Downloading";
+
+    cvDownloadLink.classList.add("is-downloading");
+    cvDownloadLink.setAttribute("aria-busy", "true");
+
+    // Re-enable after a short delay (download starts immediately)
+    setTimeout(() => {
+      if (textNode) {
+        textNode.textContent = cvDownloadLink.dataset.originalText || "Download CV";
+      }
+      cvDownloadLink.classList.remove("is-downloading");
+      cvDownloadLink.removeAttribute("aria-busy");
+    }, 2000);
+  });
+}
+
+
+// Pagination for Projects
+const ITEMS_PER_PAGE = 6;
+let currentPage = 1;
+let currentFilter = 'all';
+
+const updatePagination = () => {
+  const filterBtns = document.querySelectorAll("[data-filter-btn]");
+  const filterItems = document.querySelectorAll("[data-filter-item]");
+  
+  // Get current active filter
+  filterBtns.forEach(btn => {
+    if (btn.classList.contains("active")) {
+      currentFilter = btn.innerText.toLowerCase();
+    }
+  });
+
+  // Filter items based on selected category
+  let visibleItems = Array.from(filterItems).filter(item => {
+    if (currentFilter === 'all') return true;
+    return item.dataset.category === currentFilter;
+  });
+
+  const totalPages = Math.ceil(visibleItems.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+
+  // Hide all items first
+  filterItems.forEach(item => {
+    item.classList.remove("active");
+  });
+
+  // Show only items for current page
+  visibleItems.slice(startIndex, endIndex).forEach(item => {
+    item.classList.add("active");
+  });
+
+  // Update pagination UI
+  document.getElementById("current-page").textContent = currentPage;
+  document.getElementById("total-pages").textContent = totalPages;
+  
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages;
+  
+  // Hide pagination if only one page
+  const pagination = document.querySelector(".pagination");
+  if (pagination) {
+    pagination.style.display = totalPages <= 1 ? "none" : "flex";
+  }
+};
+
+// Pagination button events
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+
+if (prevBtn && nextBtn) {
+  prevBtn.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      updatePagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const totalPages = parseInt(document.getElementById("total-pages").textContent);
+    if (currentPage < totalPages) {
+      currentPage++;
+      updatePagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+}
+
+// Reset to page 1 when filter changes
+const filterBtns = document.querySelectorAll("[data-filter-btn]");
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentPage = 1;
+    setTimeout(updatePagination, 100);
+  });
+});
+
+// Initialize pagination on page load
+updatePagination();
+
