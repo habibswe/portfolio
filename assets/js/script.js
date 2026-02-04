@@ -204,6 +204,19 @@ for (let i = 0; i < navigationLinks.length; i++) {
 }
 
 
+// skills expand/collapse
+const skillsToggleBtn = document.querySelector("[data-skills-toggle]");
+const skillsList = document.querySelector(".skills-list");
+
+if (skillsToggleBtn && skillsList) {
+  skillsToggleBtn.addEventListener("click", () => {
+    const isExpanded = skillsList.classList.toggle("expanded");
+    skillsToggleBtn.textContent = isExpanded ? "Show Less" : "Show More";
+    skillsToggleBtn.setAttribute("aria-expanded", String(isExpanded));
+  });
+}
+
+
 // Download CV button: show downloading text + loading dots, disable pointer briefly
 const cvDownloadLink = document.querySelector(".cv-download");
 

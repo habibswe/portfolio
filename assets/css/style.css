@@ -938,11 +938,78 @@ main {
 
 .skills-list {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
+.skills-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 2px;
+  order: 1;
+}
+
+.skills-toggle-btn {
+  background: var(--border-gradient-onyx);
+  color: var(--white-1);
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: var(--fs-7);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-1);
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skills-toggle-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: var(--bg-gradient-jet);
+  z-index: -1;
+  transition: var(--transition-1);
+}
+
+.skills-toggle-btn:hover,
+.skills-toggle-btn:focus {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--white-1);
+}
+
+.skills-toggle-btn:hover::before,
+.skills-toggle-btn:focus::before {
+  background: var(--bg-gradient-yellow-2);
+}
+
+.skills-toggle-btn::after {
+  content: "▾";
+  display: inline-block;
+}
+
+.skills-list.expanded .skills-toggle-btn::after {
+  transform: rotate(180deg);
+}
+
+.extra-skill {
+  display: none;
+  order: 2;
+}
+
+.skills-list.expanded .extra-skill {
+  display: block;
+}
+
+.skills-list.expanded .skills-toggle {
+  order: 3;
+}
 
 .skills-item:not(:last-child) {
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 
 .skill .title-wrapper {
