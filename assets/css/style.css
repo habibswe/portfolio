@@ -374,6 +374,13 @@ main {
 .avatar-box {
   background: var(--bg-gradient-onyx);
   border-radius: 20px;
+  border: 5px solid var(--orange-yellow-crayola);
+  box-shadow: 0 0 20px rgba(255, 209, 102, 0.3);
+}
+
+.avatar-box img {
+  border-radius: 17px;
+  display: block;
 }
 
 .info-content .name {
